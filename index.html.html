@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Shop - Cute Landing Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffafc;
+      color: #333;
+    }
+
+    /* ===== HEADER / NAVBAR ===== */
+    header {
+      width: 100%;
+      background: linear-gradient(135deg, #ffe4f3, #e0f7fa);
+      box-shadow: 0 4px 12px rgba(255, 111, 165, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff6fa5;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.2s ease;
+      padding: 0.5rem 0.8rem;
+      border-radius: 25px;
+    }
+
+    .nav-links li a:hover {
+      color: #ff6fa5;
+      background-color: #fff0f6;
+      transform: scale(1.05);
+    }
+
+    .order-btn {
+      background-color: #ffb6c1;
+      color: #fff !important;
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+      transition: 0.3s ease;
+    }
+
+    .order-btn:hover {
+      background-color: #ff6fa5;
+      box-shadow: 0 6px 16px rgba(255, 111, 165, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* Hamburger for mobile */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #ff6fa5;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 5%;
+      background: linear-gradient(135deg, #ffe4f3, #e0f7fa);
+      min-height: 100vh;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1 1 400px;
+      max-width: 550px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      color: #ff6fa5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      border-radius: 50px;
+      background-color: #ffb6c1;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.4);
+    }
+
+    .btn:hover {
+      background-color: #ff6fa5;
+      box-shadow: 0 8px 20px rgba(255, 111, 165, 0.4);
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* ===== FEATURED ART SECTION ===== */
+    .featured {
+      padding: 4rem 5%;
+      background-color: #fff0f6;
+      text-align: center;
+    }
+
+    .featured h2 {
+      font-size: 2.2rem;
+      color: #ff6fa5;
+      margin-bottom: 2rem;
+    }
+
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .art-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .art-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(255, 111, 165, 0.4);
+    }
+
+    .art-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .art-info {
+      padding: 1rem;
+    }
+
+    .art-info h3 {
+      font-size: 1.3rem;
+      color: #ff6fa5;
+      margin: 0.5rem 0;
+    }
+
+    .art-info p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    .btn-small {
+      padding: 0.5rem 1.5rem;
+      font-size: 0.9rem;
+      border-radius: 30px;
+      background-color: #ffb6c1;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-small:hover {
+      background-color: #ff6fa5;
+    }
+
+    /* ===== ABOUT ARTIST SECTION ===== */
+    .about {
+      padding: 4rem 5%;
+      background: linear-gradient(135deg, #e0f7fa, #ffe4f3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .about-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
+
+    .about-text h2 {
+      font-size: 2.2rem;
+      color: #ff6fa5;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .about-image img {
+      max-width: 90%;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border: 6px solid #fff;
+    }
+
+    /* ===== WHY CHOOSE SECTION ===== */
+    .why-choose {
+      padding: 4rem 5%;
+      background-color: #fff0f6;
+      text-align: center;
+    }
+
+    .why-choose h2 {
+      font-size: 2.2rem;
+      color: #ff6fa5;
+      margin-bottom: 2rem;
+    }
+
+    .choose-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .choose-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .choose-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(255, 111, 165, 0.4);
+    }
+
+    .choose-card span {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      padding: 4rem 5%;
+      background: linear-gradient(135deg, #ffe4f3, #e0f7fa);
+      text-align: center;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
+      text-align: left;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: "❝";
+      font-size: 3rem;
+      color: #ffb6c1;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      opacity: 0.5;
+    }
+
+    .stars {
+      color: #ffd700;
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      padding: 3rem 5%;
+      text-align: center;
+      background: linear-gradient(135deg, #ffb6c1, #ffe4f3);
+      color: #fff;
+      border-radius: 30px;
+      margin: 3rem 5%;
+      box-shadow: 0 8px 20px rgba(255, 111, 165, 0.3);
+    }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      padding: 4rem 5%;
+      background-color: #fff0f6;
+      text-align: center;
+    }
+
+    .newsletter form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, #ffe4f3, #e0f7fa);
+      padding: 2rem 5%;
+      text-align: center;
+      border-top: 3px solid #ffb6c1;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff6fa5;
+    }
+
+    .footer-links a {
+      margin: 0 0.8rem;
+      color: #555;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ff6fa5;
+    }
+
+    .social-icons a {
+      margin: 0 0.5rem;
+      font-size: 1.4rem;
+      color: #ff6fa5;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #ff4081;
+    }
+
+    .footer-bottom {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        background: #fff0f6;
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        width: 200px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(255, 111, 165, 0.2);
+        display: none;
+        padding: 1rem;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="navbar">
+      <div class="logo">🌸 Menahil Art 🌸</div>
+      <div class="hamburger">☰</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#featured">Collection</a></li>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="#about">Contact</a></li>
+          <li><a href="#order" class="order-btn">Order Online ✨</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <h1>✨ Bring Joy with Cute Art ✨</h1>
+      <p>Discover unique handmade artworks that brighten your space and your heart. Each piece is crafted with love, pastel dreams, and creativity.</p>
+      <a href="#featured" class="btn">Shop Now 🎨</a>
+    </div>
+    <div class="hero-image">
+      <img src="b2.jpeg" alt="Cute Art">
+    </div>
+  </section>
+
+  <!-- ===== FEATURED ART SECTION ===== -->
+  <section class="featured" id="featured">
+    <h2>🌸 Featured Artworks 🌸</h2>
+    <div class="art-grid">
+      <div class="art-card">
+        <img src="b3.jpeg" alt="bouquet">
+        <div class="art-info">
+          <h3>Bouquet</h3>
+          <p>Bloom your moments with a bouquet that speaks the language of love.</p>
+          <div class="price">$50</div>
+          <a href="#" class="btn-small">Add to Cart 🛒</a>
+        </div>
+      </div>
+      <div class="art-card">
+        <img src="b1.jpeg" alt="bouquet">
+        <div class="art-info">
+          <h3>Bouquet</h3>
+          <p>Brighten any day with a bouquet that blooms brighter than smiles.</p>
+          <div class="price">$60</div>
+          <a href="#" class="btn-small">Add to Cart 🛒</a>
+        </div>
+      </div>
+      <div class="art-card">
+        <img src="b4.jpeg" alt="bouquet">
+        <div class="art-info">
+          <h3>Bouquet</h3>
+          <p>Celebrate life’s moments with the gift of fresh blooms.</p>
+          <div class="price">$50</div>
+          <a href="#" class="btn-small">Add to Cart 🛒</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ARTIST SECTION ===== -->
+  <section class="about" id="about">
+    <div class="about-image">
+      <img src="a1.jpeg" alt="Artist Photo">
+    </div>
+    <div class="about-text">
+      <h2>🎀 About the Artist 🎀</h2>
+      <p>Hello! I’m <strong>Menahil</strong>, a passionate artist who finds joy in creating pastel-inspired pieces that spread love, happiness, and warmth. My work is inspired by nature, dreams, and the beauty in everyday life. Each artwork is handmade with care to bring smiles and cozy vibes into your world. 🌸</p>
+      <a href="#featured" class="btn">Explore My Art ✨</a>
+    </div>
+  </section>
+
+  <!-- ===== WHY CHOOSE SECTION ===== -->
+  <section class="why-choose" id="why-choose">
+    <h2>💖 Why Choose My Art 💖</h2>
+    <div class="choose-grid">
+      <div class="choose-card">
+        <span>🎨</span>
+        <h3>Unique Handmade</h3>
+        <p>Each piece is crafted with love, care, and creativity, making every artwork one of a kind.</p>
+      </div>
+      <div class="choose-card">
+        <span>🌎</span>
+        <h3>Worldwide Shipping</h3>
+        <p>Delivering smiles and pastel vibes to your doorstep, no matter where you are.</p>
+      </div>
+      <div class="choose-card">
+        <span>💳</span>
+        <h3>Secure Payments</h3>
+        <p>Safe and reliable checkout for a worry-free shopping experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials" id="testimonials">
+    <h2>🌟 What Customers Say 🌟</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Absolutely love my bouquet! It brightened my entire week. Thank you, Menahil, for the beautiful art!"</p>
+        <strong>- Sarah</strong>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"The colors and details are so dreamy. I feel cozy and happy every time I look at it."</p>
+        <strong>- Aisha</strong>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Such a lovely gift! Fast delivery and the bouquet was even prettier in person."</p>
+        <strong>- Emily</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner" id="order">
+    <h2>✨ Ready to Add Cozy Vibes to Your Space? ✨</h2>
+    <p>Order your handmade artwork today and let your world bloom with happiness.</p>
+    <a href="#featured" class="btn">Order Now 💕</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">🌸 Menahil Art 🌸</div>
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#featured">Collection</a>
+        <a href="#about">Contact</a>
+        <a href="#order">Order</a>
+      </div>
+      <div class="social-icons">
+        <a href="#">🌐</a>
+        <a href="#">📷</a>
+        <a href="#">🐦</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Menahil Art. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  </script>
+
+</body>
+</html>
